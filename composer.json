@@ -1,0 +1,17 @@
+{
+    "name": "kch.software/format",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/",
+            "Controllers\\": "controllers/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kch.software"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.6"
+    }
+}
