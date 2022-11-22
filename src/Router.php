@@ -25,8 +25,8 @@ class Router {
     {
         $this->router->setNamespace('\Controllers\Admin');
         $this->router->setBasePath('/admin');
-        $this->router->match('GET|POST', '/', 'AuthController@init');
-        $this->router->get('/dashboard', 'DashboardController@init');
+        $this->router->match('GET|POST', '/', 'AdminAuthController@init');
+        $this->router->get('/dashboard', 'AdminDashboardController@init');
 
         return $this->router->run();
     }

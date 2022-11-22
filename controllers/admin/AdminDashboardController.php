@@ -4,7 +4,7 @@ namespace Controllers\Admin;
 
 use Src\AdminController;
 
-class DashboardController extends AdminController {
+class AdminDashboardController extends AdminController {
 
     public function init()
     {

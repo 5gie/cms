@@ -4,7 +4,7 @@ namespace Controllers\Admin;
 
 use Src\AdminController;
 
-class AuthController extends AdminController
+class AdminAuthController extends AdminController
 {
 
     public function init()

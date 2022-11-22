@@ -1,3 +1,6 @@
-body{
-    background: gray;
-}
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/swiper/swiper";
+@import "components/index";
+@import "variables/index";
+@import "pages/index";
+@import "layout/index";

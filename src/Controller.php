@@ -24,7 +24,7 @@ abstract class Controller {
 
     public function init()
     {
-        return $this->theme->render();
+        return $this->theme->init();
     }
 
     public function redirect($location)

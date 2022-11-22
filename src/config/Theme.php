@@ -8,38 +8,28 @@ class Theme {
     public $data;
     public $admin = false;
     private $layout = 'page';
+    private $theme_assets;
+
+    public function __construct()
+    {
+        $this->theme_assets = HTTP_SERVER . '/themes/assets/';
+    }
 
     public function __set($key, $value)
     {
         $this->{$key} = $value;
     }
 
-    public function render()
+    public function init()
     {
-        $path = $this->getLayout();
+        return $this->render($this->getLayout());
+    }
+
+    public function render($path)
+    {
+        $path = $this->getDir() . $path . '.html';
         $this->checkTemplate($path);
         include_once($path);
-    }
-
-    public function renderTemplate()
-    {
-        $path = $this->getTemplate();
-        $this->checkTemplate($path);
-        include_once($path);
-    }
-
-    public function renderHeader()
-    {
-        $header = $this->getHeader();
-        $this->checkTemplate($header);
-        include_once($header);
-    }
-
-    public function renderFooter()
-    {
-        $footer = $this->getFooter();
-        $this->checkTemplate($footer);
-        include_once($footer);
     }
 
     private function checkTemplate($path)
@@ -51,12 +41,12 @@ class Theme {
 
     public function getTemplate()
     {
-        return DIRNAME . '/'.$this->getDir().'/templates/' . $this->template . '.html';
+        return $this->template;
     }
 
     public function getLayout()
     {
-        return DIRNAME . '/'.$this->getDir().'/templates/'. $this->layout .'.html';
+        return $this->layout;
     }
 
     public function setLayout($layout)
@@ -64,19 +54,9 @@ class Theme {
         return $this->layout = $layout;
     }
 
-    public function getHeader()
-    {
-        return DIRNAME . '/'.$this->getDir().'/templates/_partials/header.html';
-    }
-
-    public function getFooter()
-    {
-        return DIRNAME . '/'.$this->getDir().'/templates/_partials/footer.html';
-    }
-
     public function getDir()
     {
-        return $this->admin ? 'admin' : 'themes';
+        return DIRNAME . '/' . ($this->admin ? 'admin' : 'themes') .'/templates/';
     }
 
 }

@@ -1,3 +1,17 @@
-<header>
-    
-</header>
+<nav class="nav">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="logo">
+                    <img src="<?php echo $this->theme_assets ?>img/logo.png" alt="Logo">
+                </div>
+            </div>
+            <div class="col">
+                <div class="nav__toggle-menu">
+                    <button type="button">menu</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</nav>
+<?php $this->render('components/menu') ?>
