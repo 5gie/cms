@@ -1,7 +1,8 @@
 <?php
 
-use Src\Config\Db;
-use Src\Config\Translator;
+namespace Src\Config;
+
+use Src\Helpers\Validate;
 
 abstract class Model {
 
@@ -17,44 +18,64 @@ abstract class Model {
 
     public function __construct()
     {
-        if(empty(self::$definition) || !isset(self::$definition['table'])){
+        if(empty(static::$definition) || !isset(static::$definition['table'])){
             throw new \Exception('This object requires definition array');
         }
-        $this->table = self::$definition['table'];
     }
 
-    public function insert(): bool
+    public function insert($auto_dates = true): bool
     {
         if(!$this->validate()){
             return false;
         }
 
-        $data = $this->getFields();
+        if($auto_dates){
+            $this->date_add = date('Y-m-d H:i:s');
+            $this->date_upd = date('Y-m-d H:i:s');
+        }
 
-        return (bool) Db::getInstance()->insert(self::$definition['table'], $data);
+        $data = $this->getFields();
+        
+        return (bool) Db::getInstance()->insert(static::$definition['table'], $data);
     }
 
-    public function update(string $where = '', int $limit = 0): bool
+    public function update(string $where = '', $auto_dates = true, int $limit = 0): bool
     {
         if (!$this->validate()) {
             return false;
         }
 
+        if ($auto_dates) {
+            $this->date_upd = date('Y-m-d H:i:s');
+        }
+
         $data = $this->getFields();
 
-        return (bool) Db::getInstance()->update(self::$definition['table'], $data, $where, $limit);
+        return (bool) Db::getInstance()->update(static::$definition['table'], $data, $where, $limit);
+    }
+
+    public function findOne($where = ''): mixed
+    {
+        $sql = 'SELECT * FROM `' . DB_PREFIX . static::$definition['table'] . '` ' . (!empty($where) ? 'WHERE ' . $where : '') . 'LIMIT 1';
+
+        return Db::getInstance()->getOne($sql);
+    }
+
+    public function findAll($where = '', $limit = 0): mixed
+    {
+        return Db::getInstance()->getAll('SELECT * FROM `' . DB_PREFIX . static::$definition['table'] . '` ' . (!empty($where) ? 'WHERE ' . $where : '') . ($limit ? 'LIMIT ' . $limit : ''));
     }
 
     public function validate(): bool
     {
-        foreach(self::$definition as $field){
+        foreach(static::$definition['fields'] as $name => $field){
 
-            if($field['required'] && empty($this->{$field['name']})){
-                $this->errors[$field['name']] = Translator::trans('%s is required', [$field['name']]);
-            } else if(isset($field['size']) && strlen($this->{$field['size']}) > $field['size']){
-                $this->errors[$field['name']] = Translator::trans('%s must not be longer than %s characters', $field['name'], $field['size']);
-            } else if(isset($field['validate']) && Validate::{$field['validate']}($this->{$field['name']})){
-                $this->errors[$field['name']] = Translator::trans('%s has the wrong format', $field['name']);
+            if(isset($field['required']) && empty($this->{$name})){
+                $this->errors[$name] = Translator::trans('%s is required', [$name]);
+            } else if(isset($field['size']) && strlen($this->{$name}) > $field['size']){
+                $this->errors[$name] = Translator::trans('%s must not be longer than %s characters', $name, $field['size']);
+            } else if((isset($field['required']) || !empty($this->{$name})) && isset($field['validate']) && Validate::{$field['validate']}($this->{$name})){
+                $this->errors[$name] = Translator::trans('%s has the wrong format', $name);
             }
 
         }
@@ -68,9 +89,9 @@ abstract class Model {
     public function getFields(): array
     {
         $output = [];
-        foreach(self::$definition as $field)
+        foreach(static::$definition['fields'] as $name => $field)
         {
-            $output[$field['name']] = $this->{$field['name']};
+            $output[$name] = $this->{$name};
         }
         return $output;
     }
@@ -82,8 +103,8 @@ abstract class Model {
 
     public function initObject(int $id)
     {
-        $where = self::$definition['primary'] . ' = ' . $id;
-        if($data = Db::getInstance()->findOne($where)){
+        $where = static::$definition['primary'] . ' = ' . $id;
+        if($data = $this->findOne($where)){
             
             foreach($data as $key => $value){
                 if(property_exists($this, $key)){

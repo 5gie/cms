@@ -13,7 +13,6 @@ class Db
     private $username = 'root';
     private $password = '';
     private $conn = null;
-    private $stmt = null;
 
     public function __construct()
     {
@@ -68,7 +67,7 @@ class Db
 
         $sql = 'INSERT INTO `' . $table . '` (' . $keys_stringified . ') VALUES ' . implode(', ', $values_stringified);
 
-        return (bool) $this->query($sql);
+        return (bool) $this->execute($sql);
     }
 
     public function update(string $table, array $data, string $where = '', int $limit = 0)
@@ -95,22 +94,28 @@ class Db
             $sql .= ' LIMIT ' . (int) $limit;
         }
 
-        return (bool) $this->query($sql);
+        return (bool) $this->execute($sql);
     }
 
     public function delete(string $table, string $where = '', int $limit = 0)
     {
         $table = DB_PREFIX . $table;
         $sql = 'DELETE FROM `' . $table . '`' . ($where ? ' WHERE ' . $where : '') . ($limit ? ' LIMIT ' . (int) $limit : '');
-        $res = $this->query($sql);
 
-        return (bool) $res;
+        return (bool) $this->execute($sql);
     }
 
-    public function findOne($where = ''): mixed
+    public function getAll(string $sql): ?array
     {
-        $sql = 'SELECT * FROM `' . $this->table . '` ' . (!empty($where) ? 'WHERE ' . $where : '') . 'LIMIT 1';
+        $stmt = $this->conn->prepare($sql);
 
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getOne(string $sql): ?array
+    {
         $stmt = $this->conn->prepare($sql);
 
         $stmt->execute();
@@ -118,18 +123,11 @@ class Db
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findAll($where = '', $limit = 0): mixed
-    {
-        return $this->query('SELECT * FROM `' . $this->table . '` ' . (!empty($where) ? 'WHERE ' . $where : '') . ($limit ? 'LIMIT ' . $limit : ''));
-    }
-
-    public function query(string $sql): mixed
+    public function execute(string $sql): bool
     {
         $stmt = $this->conn->prepare($sql);
 
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return (bool) $stmt->execute();
     }
     
 }

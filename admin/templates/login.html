@@ -7,10 +7,13 @@
     <title>Document</title>
 </head>
 <body>
+    <?php dump($this->errors) ?>
     <form method="POST">
-        <input type="text" name="login">
+        email
+        <input type="text" name="email">
+        pw
         <input type="password" name="password">
-        <input type="submit" name="submitLogin" value="login">
+        <input type="submit" name="submitAdminLogin" value="login">
     </form>
 </body>
 </html>

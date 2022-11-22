@@ -9,6 +9,7 @@ class Theme {
     public $admin = false;
     private $layout = 'page';
     private $theme_assets;
+    private $errors;
 
     public function __construct()
     {
@@ -57,6 +58,11 @@ class Theme {
     public function getDir()
     {
         return DIRNAME . '/' . ($this->admin ? 'admin' : 'themes') .'/templates/';
+    }
+
+    public function addError($key, $value)
+    {
+        $this->errors[$key] = $value;
     }
 
 }

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php echo $this->renderHead() ?>
+    <?php echo $this->render('_partials/head') ?>
 </head>
 <body>
     <header>
-        <?php echo $this->renderHeader() ?>
+        <?php echo $this->render('_partials/header') ?>
     </header>
     <main>
-        <?php echo $this->renderTemplate() ?>
+        <?php echo $this->render($this->getTemplate()) ?>
     </main>
     <footer>
-        <?php echo $this->renderFooter() ?>
+        <?php echo $this->render('_partials/footer') ?>
     </footer>
 </body>
 </html>

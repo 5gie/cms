@@ -3,6 +3,8 @@
 namespace Controllers\Admin;
 
 use Src\AdminController;
+use Src\Classes\Employee;
+use Src\Config\Translator;
 
 class AdminAuthController extends AdminController
 {
@@ -10,9 +12,9 @@ class AdminAuthController extends AdminController
     public function init()
     {
         $this->theme->setLayout('login');
-        if($this->request->isSubmit('submitLogin')){
-            $this->postProcess();
-        } 
+
+        $this->postProcess();
+      
         return parent::init();
     }
 
@@ -26,9 +28,29 @@ class AdminAuthController extends AdminController
      */
     public function postProcess() 
     {
-        $this->session->set('admin' , [
-            'login' => $this->request->getValue('login')
-        ]);
-        $this->redirect('/dashboard');
+        if($this->request->isSubmit('submitAdminLogin')){
+
+            $error = false;
+
+            if(!$employee = Employee::getByEmail($this->request->getValue('email'))){
+                $error = true;
+
+            } 
+
+            if(!password_verify($this->request->getValue('password'), $employee['password'])){
+                $error = true;
+            }
+
+            if(!$error){
+                $this->session->set('admin' , [
+                    'id_employee' => $employee['id_employee'],
+                    'email' => $employee['email'],
+                ]);
+                $this->redirect('/dashboard');
+            } else {
+                $this->theme->addError('admin_login', Translator::trans('Nieprawidłowy login lub hasło'));
+            }
+        }
+        
     }
 }

@@ -24,6 +24,7 @@ abstract class Controller {
 
     public function init()
     {
+        $this->postProcess();
         return $this->theme->init();
     }
 
@@ -31,5 +32,7 @@ abstract class Controller {
     {
         header('location: ' . $location);
     }
+
+    public function postProcess(){}
 
 }
