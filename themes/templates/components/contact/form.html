@@ -1,0 +1,94 @@
+<div class="contact-form">
+    <?php if(!empty($this->data['form'])): ?>
+        <?php if(isset($this->data['form']['contact_form']['title'])): ?>
+            <p class="contact-form__title">Formularz kontaktowy</p>
+        <?php endif ?>
+        <?php if(isset($this->data['form']['contact_form']['errors']) && !empty($this->data['form']['contact_form']['errors'])): ?>
+            <div class="form-errors">
+                <div class="alert aler-danger">
+                    <?php foreach($this->data['form']['contact_form']['errors'] as $error): ?>
+                        <p><?php echo $error ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif ?> 
+        <form <?php if(isset($this->data['form']['contact_form']['action'])): ?>action="<?php echo $this->data['form']['contact_form']['action'] ?>"<?php endif ?> method="POST">
+            <?php foreach($this->data['form']['contact_form']['input'] as $name => $field): ?>
+                <div class="form-group">
+                    <div class="form-input">
+                        <?php if($field['type'] == 'text' || $field['type'] == 'email' || $field['type'] == 'number'): ?>
+                            <input 
+                                class="input-effect 
+                                <?php if(isset($field['value']) && !empty($field['value'])): ?>has-content<?php endif ?>
+                                <?php if(isset($field['errors']) && !empty($field['errors'])): ?>has-errors<?php endif ?>" 
+                                type="<?php echo $field['type'] ?>"
+                                name="<?php echo $name ?>"
+                                <?php if(isset($field['value'])): ?>
+                                    value="<?php echo $field['value'] ?>"
+                                <?php endif ?>
+                                <?php if(isset($field['required']) && $field['required']): ?>required<?php endif ?>
+                            >
+                            <label>
+                                <?php echo $field['label'] ?>
+                                <?php if(isset($field['required']) && $field['required']): ?>
+                                    <span class="required">*</span>
+                                <?php endif ?>
+                            </label>
+                            <span class="focus-border"></span>
+                        <?php elseif($field['type'] == 'textarea'): ?>
+                            <textarea class="input-effect 
+                                <?php if(isset($field['value']) && !empty($field['value'])): ?>has-content<?php endif ?>
+                                <?php if(isset($field['errors']) && !empty($field['errors'])): ?>has-errors<?php endif ?>"
+                                name="<?php echo $name ?>"
+                                <?php if(isset($field['required']) && $field['required']): ?>required<?php endif ?>
+                            ><?php if(isset($field['value'])): ?><?php echo $field['value'] ?><?php endif ?></textarea>
+                            <label>
+                                <?php echo $field['label'] ?>
+                                <?php if(isset($field['required']) && $field['required']): ?>
+                                    <span class="required">*</span>
+                                <?php endif ?>
+                            </label>
+                            <span class="focus-border"></span>
+                        <?php elseif($field['type'] == 'checkbox'): ?>
+                            <div class="custom-control custom-checkbox <?php if(isset($field['errors']) && !empty($field['errors'])): ?>has-errors<?php endif ?>">
+                                <input 
+                                    type="checkbox"
+                                    name="<?php echo $name ?>"
+                                    class="custom-control-input"
+                                    id="checkbox-<?php echo $name ?>"
+                                    value="1"
+                                    <?php if(isset($field['required']) && $field['required']): ?>required<?php endif ?>
+                                    <?php if(isset($field['value']) && $field['value'] == 1): ?>
+                                        checked
+                                    <?php endif ?>
+                                >
+                                <label class="custom-control-label" for="checkbox-<?php echo $name ?>">
+                                    <?php echo $field['label'] ?>
+                                    <?php if(isset($field['required']) && $field['required']): ?>
+                                        <span class="required">*</span>
+                                    <?php endif ?>
+                                </label>
+                            </div>
+                        <?php elseif($field['type'] == 'hidden'): ?>
+                            <input type="hidden" name="<?php echo $name ?>">
+                        <?php endif ?>
+                    </div>
+                    <?php if(isset($field['errors']) && !empty($field['errors'])): ?>
+                        <ul class="input-errors">
+                            <?php foreach($field['errors'] as $error): ?>
+                                <li><?php echo $error ?></li>
+                            <?php endforeach ?>
+                        </ul>
+                    <?php endif ?>
+                </div>
+            <?php endforeach ?>
+            <?php if(isset($this->data['form']['contact_form']['submit'])): ?>
+                <input 
+                    type="submit"
+                    name="<?php echo $this->data['form']['contact_form']['submit']['name'] ?>"
+                    value="<?php echo $this->data['form']['contact_form']['submit']['label'] ?>"
+                >
+            <?php endif ?>
+        </form>
+    <?php endif ?>
+</div>

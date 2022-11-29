@@ -1,0 +1,88 @@
+label,
+.label {
+    color: $gray-900;
+}
+.main-lead{
+    text-transform: uppercase;
+    letter-spacing: rem-calc(4px);
+    font-size:rem-calc(14px);
+    color:$format-gold;
+    display: block;
+    margin-bottom: 5px;
+    @include media-breakpoint-down(xs){
+        font-size:rem-calc(13px);
+    }
+}
+.main-head{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size:rem-calc(64px);
+    color:$format-navy-blue;
+    line-height: 1.1;
+    letter-spacing: rem-calc(4px);
+    margin-bottom: rem-calc(15px);
+    &--white{
+        color:$white;
+    }
+    &--small{
+        font-size:rem-calc(48px);
+    }
+    @include media-breakpoint-down(lg){
+        font-size:rem-calc(48px);
+        &--small{
+            font-size:rem-calc(38px);
+        }
+    }
+    @include media-breakpoint-down(sm){
+        font-size:rem-calc(36px);
+        &--small{
+            font-size:rem-calc(34px);
+        }
+    }
+    @include media-breakpoint-down(xs){
+        font-size:rem-calc(30px);
+        &--small{
+            font-size:rem-calc(28px);
+        }
+    }
+}
+.main-text{
+    font-size:rem-calc(16px);
+    color:$format-gray;
+    line-height: 1.7;
+    margin-bottom: rem-calc(20px);
+    &--large{
+        font-size:rem-calc(22px);
+        line-height: 2;
+    }
+    @include media-breakpoint-down(lg){
+        font-size:rem-calc(14px);
+        &--large{
+            font-size:rem-calc(18px);
+        }
+    }
+    @include media-breakpoint-down(sm){
+        &--large{
+            font-size:rem-calc(16px);
+        }
+    }
+}
+.main-subtitle{
+    font-size:18px;
+    color:$format-navy-blue;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 300;
+    &--white{
+        color:$white;
+    }
+    @include media-breakpoint-down(lg){
+        font-size:rem-calc(16px);
+    }
+    @include media-breakpoint-down(md){
+        font-size:rem-calc(14px);
+    }
+    @include media-breakpoint-down(sm){
+        font-size:rem-calc(13px);
+    }
+}

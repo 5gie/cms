@@ -4,7 +4,7 @@ namespace Controllers\Admin;
 
 use Src\AdminController;
 use Src\Classes\Employee;
-use Src\Config\Translator;
+use Src\Helpers\Translator;
 
 class AdminAuthController extends AdminController
 {

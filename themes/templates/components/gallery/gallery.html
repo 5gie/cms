@@ -1,0 +1,11 @@
+<section class="page-gallery" data-bg="bright">
+    <div class="container">
+        <div class="page-gallery__items">
+            <?php foreach($this->data['images'] as $image): ?>
+            <div class="page-gallery__item">
+                <a href="<?php echo $image['url'] ?>" data-lightbox="gallery"><img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>"></a> 
+            </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+.gallery{
+    $self: &;
+    &--2{
+        #{$self}{
+            &__image{
+                position: relative;
+                &--second{
+                    margin-top: rem-calc(100px);
+                    @include media-breakpoint-down(xs){
+                        margin-top: rem-calc(24px);
+                    }
+                }
+                img{
+                    @include image-cover;
+                }
+            }
+        }
+    }
+}

@@ -1,16 +1,59 @@
 <div class="menu" id="main-menu">
-    <ul class="menu__list">
-        <li class="menu__item">
-            <a class="menu__link" href="#">Home</a>
-        </li>
-        <li class="menu__item">
-            <a class="menu__link" href="#">O nas</a>
-        </li>
-        <li class="menu__item">
-            <a class="menu__link" href="#">Realizacje</a>
-        </li>
-        <li class="menu__item">
-            <a class="menu__link" href="#">Kontakt</a>
-        </li>
-    </ul>
+    <div class="container">
+        <ul class="menu__list">
+            <li class="menu__item">
+                <a class="menu__link" 
+                    href="<?php echo $this->data['urls']['base'] ?>"
+                    data-image="<?php echo $this->data['urls']['theme_img'] ?>about1.jpg"
+                    data-width="300px"
+                    data-height="400px"
+                    >
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" 
+                    href="<?php echo $this->data['urls']['base'] ?>o-nas"
+                    data-image="<?php echo $this->data['urls']['theme_img'] ?>menu-o-nas.jpg"
+                    data-width="380px"
+                    data-height="400px"
+                    >
+                    <span>O nas</span>
+                </a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" 
+                    href="<?php echo $this->data['urls']['base'] ?>nasza-oferta"
+                    data-image="<?php echo $this->data['urls']['theme_img'] ?>menu-oferta.jpg"
+                    data-width="366px"
+                    data-height="400px"
+                    >
+                    <span>Nasza oferta</span>
+                </a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" 
+                    href="<?php echo $this->data['urls']['base'] ?>realizacje"
+                    data-image="<?php echo $this->data['urls']['theme_img'] ?>menu-realizacje.jpg"
+                    data-width="326px"
+                    data-height="400px"
+                >
+                    <span>Realizacje</span>
+                </a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" 
+                    href="<?php echo $this->data['urls']['base'] ?>kontakt"
+                    data-image="<?php echo $this->data['urls']['theme_img'] ?>menu-kontakt.jpg"
+                    data-width="400px"
+                    data-height="400px"
+                >
+                    <span>Kontakt</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="menu__image-wrapper">
+        <div class="menu__image"></div>
+    </div>
 </div>

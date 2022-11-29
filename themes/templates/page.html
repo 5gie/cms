@@ -4,13 +4,24 @@
     <?php echo $this->render('_partials/head') ?>
 </head>
 <body>
-    <header>
+    <header class="header header--<?php echo $this->data['page']['name'] ?>">
         <?php echo $this->render('_partials/header') ?>
     </header>
-    <main>
+    <?php if(!empty($this->getNotifications())): ?>
+    <div class="notifications">
+        <?php foreach($this->getNotifications() as $key => $type): ?>
+            <div class="alert alert-<?php echo $key ?>">
+                <?php foreach($type as $msg): ?>
+                <p><?php echo $msg ?></p>
+                <?php endforeach ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <?php endif ?>
+    <main class="main">
         <?php echo $this->render($this->getTemplate()) ?>
     </main>
-    <footer>
+    <footer class="footer footer--<?php echo $this->data['page']['name'] ?>">
         <?php echo $this->render('_partials/footer') ?>
     </footer>
     <?php $this->render('_partials/javascript') ?>

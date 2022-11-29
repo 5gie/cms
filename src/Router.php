@@ -17,6 +17,8 @@ class Router {
     {
         $this->router->setNamespace('\Controllers\Front');
         $this->router->get('/', 'IndexController@init');
+        $this->router->match('GET|POST', '/kontakt', 'ContactController@init');
+        $this->router->get('/{:page}', 'PageController@init');
 
         return $this->router->run();
     }

@@ -1,3 +1,4 @@
+const chokidar = require('chokidar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -137,20 +138,20 @@ exports.extractFonts = ({ publicPath }) => ({
   }
 })
 
-exports.extractVendorsChunks = () => ({
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        swiper: {
-          test: /[\\/]node_modules[\\/](swiper|dom7)[\\/]/,
-          name: 'swipervendor',
-          filename: 'js/swipervendor.js',
-          chunks: 'initial',
-        }
-      },
-    },
-  },
-})
+// exports.extractVendorsChunks = () => ({
+//   optimization: {
+//     splitChunks: {
+//       cacheGroups: {
+//         swiper: {
+//           test: /[\\/]node_modules[\\/](swiper|dom7)[\\/]/,
+//           name: 'swipervendor',
+//           filename: 'js/swipervendor.js',
+//           chunks: 'initial',
+//         }
+//       },
+//     },
+//   },
+// })
 
 exports.cleanDistFolders = () => ({
   plugins: [
@@ -185,7 +186,7 @@ exports.preloadFonts = () => ({
     new FontPreloadPlugin({
       index: 'preload.html',
       extensions: ['woff2', 'ttf'],
-      filter: /(font-awesome|montserrat|poppins)/i,
+      filter: /(materialicons|font-awesome)/i,
       replaceCallback: ({ indexSource, linksAsString }) => {
         return indexSource.replace('{{{preloadLinks}}}', linksAsString);
       },

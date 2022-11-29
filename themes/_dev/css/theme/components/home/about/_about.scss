@@ -1,0 +1,79 @@
+.about{
+    padding: rem-calc(100px) 0;
+    &__content{
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: rem-calc(30px);
+        @include media-breakpoint-down(md){
+            margin-bottom: rem-calc(50px);
+            padding: 0;
+        }
+    }
+    &__head{
+        position: relative;
+        margin-bottom: rem-calc(40px);
+        padding-bottom: rem-calc(20px);
+        &:after{
+            @include after-absolute-left();
+            background: url('../img/line-long.svg') center left no-repeat;
+            background-size:auto 100%;
+            top:100%;
+            height: 19px;
+            width: 270px;
+            background-repeat: no-repeat;
+            @include media-breakpoint-down(lg){
+                height: 16px;;
+                width: 200px;
+            }
+        }
+    }
+    &__text{
+        margin-bottom: rem-calc(40px);
+        @include media-breakpoint-down(lg){
+            margin-bottom: rem-calc(20px);
+        }
+    }
+    &__image{
+        position: relative;
+        &--first{
+            &:after{
+                content:'';
+                background: url('../img/about-after.svg') center center no-repeat;
+                background-size: cover;
+                position: absolute;
+                top:100%;
+                right: 0;
+                width: 67px;
+                height: 66px;
+                margin-top: rem-calc(24px);
+            }   
+        }
+        &--second{
+            margin-top:rem-calc(100px);
+            &:after{
+                content:'';
+                background: url('../img/about-after2.svg') center center no-repeat;
+                background-size: cover;
+                position: absolute;
+                bottom:100%;
+                left: 0;
+                width: 104px;
+                height: 42px;
+                margin-bottom: rem-calc(24px);
+            }   
+        }
+        @include media-breakpoint-down(xs){
+            &:after{
+                display: none;
+            }
+            &--second{
+                margin-top:rem-calc(30px);
+            }
+        }
+    }
+    @include media-breakpoint-down(xs){
+        padding: rem-calc(50px) 0 rem-calc(70px) 0;
+    }
+}

@@ -1,5 +1,5 @@
 const { configureDevServer } = require('./webpack.parts');
-// const { HotAcceptPlugin } = require('hot-accept-webpack-plugin');
+const { HotAcceptPlugin } = require('hot-accept-webpack-plugin');
 const webpack = require('webpack');
 const { merge } = require("webpack-merge");
 
@@ -8,11 +8,11 @@ const devServerConfig = (serverAddress, publicPath, port, siteURL, entriesArray)
     devServer: configureDevServer(serverAddress, publicPath, port, siteURL),
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      // new HotAcceptPlugin({
-      //   test: [
-      //     ...entriesArray.map(el => `${el}.js`)
-      //   ]
-      // })
+      new HotAcceptPlugin({
+        test: [
+          ...entriesArray.map(el => `${el}.js`)
+        ]
+      })
     ]
   }
 }

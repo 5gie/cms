@@ -1,0 +1,123 @@
+.input-effect {
+    border: 0;
+    padding: 6px 0;
+    border-bottom: 1px solid $gray-500;
+    background-color: transparent;
+    outline:none;
+    width: 100%;
+    color:$format-navy-blue;
+    &~.focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $format-gold;
+        transition: 0.4s;
+    }
+    &:focus~.focus-border, &.has-content~.focus-border{
+        width: 100%;
+        transition: 0.4s;
+    }
+    &~label {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 6px;
+        color: $gray-500;
+        transition: 0.3s;
+        z-index: -1;
+        letter-spacing: 0.5px;
+        font-size:rem-calc(15px);
+    }
+    &:focus~label, &.has-content~label{
+        top: -16px;
+        font-size: 12px;
+        color: $format-gold;
+        transition: 0.3s;
+    }
+    &.has-errors{
+        &~.focus-border{
+            background-color: $danger;
+        }
+    }
+}
+.contact-form{
+    .input-errors{
+        margin-top: rem-calc(5px);
+        li{
+            font-size:rem-calc(13px);
+            line-height: 1.5;
+            color:$danger;
+        }
+    }
+    &__title{
+        font-size:rem-calc(24px);
+        color:$format-navy-blue;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: rem-calc(30px);
+        letter-spacing: 2px;
+        position: relative;
+        margin-bottom: rem-calc(40px);
+        &:after{
+            @include after-absolute-left();
+            background: url('../img/line-long.svg');
+            top:100%;
+            height: 14px;
+            width: 180px;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+        }
+    }
+    .form-group{
+        margin-bottom: rem-calc(20px);
+    }
+    .form-input{
+        position: relative;
+    }
+    .custom-control-label{
+        font-size:rem-calc(14px);
+        color:$gray-500;
+    }
+    .custom-control-label::before{
+        box-shadow:none !important;
+    }
+    .custom-control-label::before, .custom-control-label::after{
+        top: rem-calc(2px);
+    }
+    .custom-control-input:checked ~ .custom-control-label::before{
+        background: $format-gold;
+        border-color: $format-gold;
+    }
+    .custom-control-input:checked ~ .custom-control-label{
+        color:$format-gray;
+    }
+    input[type="submit"]{
+        background: $format-gold;
+        border:none;
+        padding: rem-calc(13px) rem-calc(30px);
+        text-transform: uppercase;
+        font-size:rem-calc(14px);
+        letter-spacing: 2px;
+        color:$white;
+        font-weight: 600;
+        transition: 0.3s;
+        &:hover{
+            filter:brightness(0.9);
+        }
+    }
+    @include media-breakpoint-down(md){
+        &__title{
+            font-size:rem-calc(22px);
+        }
+        .input-errors{
+            li{
+                font-size:rem-calc(12px);
+            }
+        }
+        .custom-control-label{
+            font-size:rem-calc(12px);
+        }
+    }
+}

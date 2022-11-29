@@ -1,0 +1,51 @@
+<?php $this->render('components/page/head-banner', [
+    'banner' => [
+        'url' => $this->data['urls']['theme_img'] . 'head_about.jpg',
+        'title' => 'Galeria',
+        'subtitle' => 'Sprawdź nasze ostatnie realizacje'
+    ]
+]) ?>
+<?php $this->render('components/gallery/gallery', [
+    'images' => [
+        [
+            'url' => $this->data['urls']['theme_img'] . 'about1.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'about2.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'head_about.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'menu-realizacje.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'page-about-1.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'page-about-2.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'page-about-3.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'realisation.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'realisation2.jpg',
+            'alt' => '',
+        ],
+        [
+            'url' => $this->data['urls']['theme_img'] . 'realisation3.jpg',
+            'alt' => '',
+        ],
+    ],
+]) ?>

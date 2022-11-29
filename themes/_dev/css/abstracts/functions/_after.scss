@@ -1,0 +1,30 @@
+@mixin after-absolute-left(){
+    content:'';
+    position: absolute;
+    left: 0;
+}
+@mixin after-absolute-right-full(){
+    content:'';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+@mixin after-absolute-both(){
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+@mixin after-absolute(){
+    content: '';
+    position: absolute;
+}
+@mixin after-full(){
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}

@@ -1,0 +1,19 @@
+<?php $this->render('components/page/head-banner', [
+    'banner' => [
+        'url' => $this->data['urls']['theme_img'] . 'head_about.jpg',
+        'title' => 'Kontakt',
+        'subtitle' => 'Chętnie odpowiemy na twoje pytania'
+    ]
+]) ?>
+<section data-bg="bright" class="page-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <?php $this->render('components/contact/data') ?>
+            </div>
+            <div class="col-lg-8">
+                <?php $this->render('components/contact/form') ?>
+            </div>
+        </div>
+    </div>
+</section>

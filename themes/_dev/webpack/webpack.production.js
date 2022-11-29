@@ -14,6 +14,8 @@ const plugins = (purge, analyze) => ([
       'js/*.js',
       'js/**/*.js',
       '../templates/**/*.html',
+      '../modules/**/*.html',
+      '../modules/**/*.js'
     ]),
     safelist: safeList.list,
     safelistPatterns: safeList.patterns

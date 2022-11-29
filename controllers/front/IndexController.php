@@ -15,4 +15,13 @@ class IndexController extends Controller{
     {
         $this->theme->template = 'pages/index';
     }
+
+    public function getTemplateVarPage(): array
+    {
+        $vars = parent::getTemplateVarPage();
+        $vars['meta_title'] = 'Format Meble'; // TODO
+        $vars['meta_description'] = ''; //TODO
+        $vars['name'] = 'index';
+        return $vars;
+    }
 }

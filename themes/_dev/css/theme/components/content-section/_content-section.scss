@@ -1,0 +1,33 @@
+.content-section{
+    padding: rem-calc(100px) 0;
+    $self: &;
+    &__content{
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    &--left{
+        #{$self}{
+            &__content{
+                padding-right: rem-calc(50px);
+            }
+        }
+    }
+    &--right{
+        #{$self}{
+            &__content{
+                padding-left: rem-calc(50px);
+            }
+        }
+    }
+    @include media-breakpoint-down(md){
+        padding: rem-calc(70px) 0;
+        &__content{
+            padding: 0 !important;
+            margin-bottom: rem-calc(50px);
+        }
+    }
+    @include media-breakpoint-down(xs){
+        padding: rem-calc(50px) 0 rem-calc(20px) 0;
+    }
+}

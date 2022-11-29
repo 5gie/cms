@@ -1,0 +1,20 @@
+<section class="content-section content-section--<?php echo $data['section']['type'] ?>" data-bg="bright">
+    <div class="content-section__inner">
+        <div class="container">
+            <div class="row <?php echo $data['section']['type'] == 'right' ? 'flex-row-reverse' : '' ?>">
+                <div class="col-lg-5">
+                    <div class="content-section__content">
+                        <p class="content-section__text main-text main-text--large"><?php echo $data['section']['text'] ?></p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="content-section__gallery">
+                        <?php $this->render('components/page/gallery/type-' . $this->data['section']['gallery'], [
+                            'images' => $this->data['section']['images']
+                        ]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

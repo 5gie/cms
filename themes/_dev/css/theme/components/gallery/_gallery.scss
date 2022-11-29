@@ -1,0 +1,21 @@
+@import '~simplelightbox/src/simple-lightbox.scss';
+.page-gallery{
+    padding: rem-calc(100px) 0;
+    &__item{
+        width: 33.33%;
+        padding: 10px;
+        a{
+            display: block;
+        }
+        img{
+            width: 100%;
+        }
+        @include media-breakpoint-down(md){
+            width: 50%;
+            padding: rem-calc(5px);
+        }
+    }
+    @include media-breakpoint-down(md){
+        padding: rem-calc(50px) 0;
+    }
+}

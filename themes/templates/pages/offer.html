@@ -1,0 +1,41 @@
+<?php $this->render('components/page/head-banner', [
+    'banner' => [
+        'url' => $this->data['urls']['theme_img'] . 'head_about.jpg',
+        'title' => 'Oferta',
+        'subtitle' => 'Czyli o tym, czym sie zajmujemy'
+    ]
+]) ?>
+<?php $this->render('components/page/content-section', [
+    'section' => [
+        'images' => [
+            [
+                'url' => $this->data['urls']['theme_img'] . 'about1.jpg',
+                'alt' => '',
+            ],
+            [
+                'url' => $this->data['urls']['theme_img'] . 'about2.jpg',
+                'alt' => '',
+            ],
+        ],
+        'gallery' => 2,
+        'type' => 'left',
+        'text' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et consectetur aperiam laudantium incidunt ab iusto autem minus molestias rem quos, cumque inventore sit possimus suscipit dolorem exercitationem corrupti dicta sapiente vitae doloribus. Praesentium dicta esse possimus excepturi omnis aliquid, minima, facere debitis optio enim vero voluptas doloremque eos sapiente!'
+    ]
+]) ?>
+<?php $this->render('components/page/content-section', [
+    'section' => [
+        'images' => [
+            [
+                'url' => $this->data['urls']['theme_img'] . 'page-about-1.jpg',
+                'alt' => '',
+            ],
+            [
+                'url' => $this->data['urls']['theme_img'] . 'page-about-2.jpg',
+                'alt' => '',
+            ],
+        ],
+        'gallery' => 3,
+        'type' => 'right',
+        'text' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et consectetur aperiam laudantium incidunt ab iusto autem minus molestias rem quos, cumque inventore sit possimus suscipit dolorem exercitationem corrupti dicta sapiente vitae doloribus. Praesentium dicta esse possimus excepturi omnis aliquid, minima, facere debitis optio enim vero voluptas doloremque eos sapiente!'
+    ]
+]) ?>

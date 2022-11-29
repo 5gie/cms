@@ -1,17 +1,24 @@
-<nav class="nav">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="logo">
-                    <img src="<?php echo $this->theme_assets ?>img/logo.png" alt="Logo">
+<nav class="nav nav--bright">
+    <div class="nav__inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <a href="<?php echo $this->data['urls']['base'] ?>" class="nav__logo">
+                        <img class="logo logo--bright" src="<?php echo $this->data['urls']['theme_img'] ?>logo.png" alt="Format Meble logo">
+                        <img class="logo logo--dark" src="<?php echo $this->data['urls']['theme_img'] ?>logo-dark.png" alt="Format Meble logo">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="nav__toggle-menu">
+                        <button type="button" id="menu-toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="nav__toggle-menu">
-                    <button type="button">menu</button>
-                </div>
-            </div>
-        </div>
-    </div>    
+        </div> 
+    </div>   
 </nav>
 <?php $this->render('components/menu') ?>

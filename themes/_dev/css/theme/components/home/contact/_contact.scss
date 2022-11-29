@@ -1,0 +1,57 @@
+.contact{
+    background: url('../img/contact.jpg') center top no-repeat;
+    background-size: cover;
+    height: rem-calc(560px);
+    &__inner{
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+    &__phone{
+        display: flex;
+        justify-content: flex-end;
+        a{
+            font-size: rem-calc(26px);
+            font-weight: 500;
+            padding: rem-calc(15px);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            i{
+                margin-right:10px;
+                color:$format-gold;
+            }
+            &:after{
+                @include after-absolute;
+                top: calc(100% - 33px);
+                background: url('../img/phone-bg.svg') center bottom no-repeat;
+                width: 266px;
+                height: 27px;
+                left:-12px;
+            }
+        }
+    }
+    @include media-breakpoint-down(lg){
+        height: rem-calc(460px);
+        &__phone{
+            justify-content: flex-start;
+            margin-top: rem-calc(20px);
+            a{
+                padding: rem-calc(5px) 0px;
+                &:after{
+                    display: none;
+                }
+            }
+        }
+    }
+    @include media-breakpoint-down(md){
+        &__phone{
+            a{
+                font-size:rem-calc(20px);
+            }
+        }
+    }
+    @include media-breakpoint-down(sm){
+        height: rem-calc(400px);
+    }
+}

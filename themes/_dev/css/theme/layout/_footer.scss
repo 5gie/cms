@@ -1,0 +1,104 @@
+.footer{
+    box-shadow: 0px 0px 20px -3px rgba(0,0,0,0.1);
+    &:not(.footer--index){
+        margin-top: rem-calc(30px);
+    }
+    &__inner{
+        padding: rem-calc(50px) 0;
+        @include media-breakpoint-down(md){
+            padding: rem-calc(50px) 0 rem-calc(20px) 0;
+        }
+        @include media-breakpoint-down(sm){
+            padding: rem-calc(30px) 0 rem-calc(20px) 0;
+        }
+    }
+    &__logo{
+        margin-bottom: rem-calc(10px);
+        margin-top: rem-calc(-8px);
+    }
+    &__text{
+        p{
+            font-size:rem-calc(12px);
+            color:$format-gray-light;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+    }
+    &__heading{
+        text-transform: uppercase;
+        font-weight: 600;
+        color:$format-navy-blue;
+        letter-spacing: 2px;
+        margin-bottom: rem-calc(20px);
+        font-size:rem-calc(20px);
+        line-height: 1.2;
+        i{
+            color:#BFA58D;
+        }
+        @include media-breakpoint-down(lg){
+            font-size:rem-calc(16px);
+            margin-bottom: rem-calc(10px);
+        }
+    }
+    &__list{
+        margin-bottom: 0;
+        li{
+            margin-bottom: rem-calc(5px);
+            @include media-breakpoint-down(lg){
+                margin-bottom: 0;
+            }
+            a,span{
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size:rem-calc(14px);
+                color:$format-gray-light;
+                transition: 0.3s;
+                padding: 2px 0px; 
+                @include media-breakpoint-down(lg){
+                    font-size:rem-calc(12px);
+                }
+            }
+            a{
+                &:hover{
+                    color:$format-gold;
+                }
+            }
+        }
+        @include media-breakpoint-down(md){
+            margin-bottom: rem-calc(30px);
+        }
+    }
+    &__bottom{
+        border-top:1px solid rgba(0,0,0,0.1);
+        padding: rem-calc(25px) 0;
+        p{
+            margin-bottom: 0;
+            color:$gray-400;
+            font-size:rem-calc(14px);
+            letter-spacing: 1px;
+        }
+        @include media-breakpoint-down(md){
+            padding: rem-calc(15px) 0px;
+            p{
+                text-align: center;
+                font-size:rem-calc(12px);
+            }
+        }
+        
+    }
+    &__kch{
+        display: flex;
+        justify-content: flex-end;
+        a{
+            color:$gray-400;
+            transition: 0.3s;
+            &:hover{
+                color:$format-gray-light;
+            }
+        }
+        @include media-breakpoint-down(md){
+            margin-top: rem-calc(10px);   
+            justify-content: center;
+        }
+    }
+}

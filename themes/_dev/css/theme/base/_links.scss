@@ -1,0 +1,64 @@
+.main-link{
+    font-size:rem-calc(18px);
+    color:$white;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: rem-calc(2px);
+    transition: 0.3s;
+    padding: 5px 0px;
+    &:after{
+        content:'';
+        display: block;
+        width: rem-calc(50px);
+        height: 2px;
+        background: $white;
+        margin-left:rem-calc(10px);
+        transition: 0.3s;
+    }
+    &:hover{
+        color: $format-gold;
+        &:after{
+            background: $format-gold;
+            width: rem-calc(55px);
+        }
+    }
+    &--gold{
+        color:$format-gold;
+        &:after{
+            background: $format-gold;
+        }
+        &:hover{
+            color:$white;
+            &:after{
+                background: $white;
+            }
+        }
+    }
+    &--hover-dark{
+        &:hover{
+            color:$format-navy-blue;
+            &:after{
+                background: $format-navy-blue;
+            }
+        }
+    }
+    &--dark{
+        color:$format-navy-blue;
+        &:after{
+            background: $format-navy-blue;
+        }
+        &:hover{
+            color:$format-gold;
+            &:after{
+                background: $format-gold;
+            }
+        }
+    }
+    @include media-breakpoint-down(sm){
+        font-size:rem-calc(16px);
+    }
+    @include media-breakpoint-down(xs){
+        font-size:rem-calc(15px);
+    }
+}

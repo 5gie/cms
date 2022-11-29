@@ -1,0 +1,29 @@
+.gallery{
+    $self: &;
+    &--3{
+        #{$self}{
+            &__image{
+                height: rem-calc(300px);
+                margin-bottom: rem-calc(30px);
+                img{
+                    @include image-cover;
+                }
+                &--first{
+                    margin-right:rem-calc(70px);
+                }
+                &--second{
+                    margin-left:rem-calc(70px);
+                }
+                @include media-breakpoint-down(xs){
+                    margin-bottom: rem-calc(24px);
+                    &--first{
+                        margin-right: 0;
+                    }
+                    &--second{
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

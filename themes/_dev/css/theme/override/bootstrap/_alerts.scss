@@ -1,0 +1,23 @@
+.alert{
+    border-radius:0;
+    padding: rem-calc(12px) rem-calc(20px); 
+    font-size:rem-calc(15px);
+    position: relative;
+    z-index: 1;
+    border:none;
+    ul{
+        margin-bottom: 0;
+    }
+}
+.alert-danger, .alert-error{
+    color:$white;
+    background: #f32525;
+}
+.alert-success{
+    color:$white;
+    background: #5cb429;
+}
+.alert-warning{
+    color:$black;
+    background: #f8d330;
+}
